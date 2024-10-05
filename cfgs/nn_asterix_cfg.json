@@ -1,0 +1,94 @@
+{
+    "experiment": {
+        "gamma": 1,
+        "horizon": 75,
+        "base_policy": 0.8,
+        "eval_policy": 0.2,
+        "stochastic_env": true,
+        "stochastic_rewards": false,
+        "sparse_rewards": false,
+        "num_traj": 1000,
+        "is_pomdp": false,
+        "pomdp_horizon": 2,
+        "seed": 1000,
+        "experiment_number": 0,
+        "access": 0,
+        "secret": 0,
+        "to_regress_pi_b": {
+            "to_regress": false,
+            "model": "defaultFFNN",
+            "max_epochs": 100,
+            "batch_size": 32,
+            "clipnorm": 1.0
+        },
+        "frameskip": 1,
+        "frameheight": 1
+    },
+    "compute": {
+        "n_jobs": 1
+    },
+    "models": {
+        "ours": {
+            "model": "defaultFFNN",
+            "env": "cartpole",
+            "c": 2,
+            "num_abs_states": 8
+        },
+        "FQE": {
+            "model": "defaultCNN",
+            "convergence_epsilon": 1e-4,
+            "max_epochs": 100,
+            "batch_size": 32,
+            "clipnorm": 1.0
+        },
+        "Retrace": {
+            "model": "defaultCNN",
+            "convergence_epsilon": 1e-4,
+            "max_epochs": 3,
+            "batch_size": 32,
+            "clipnorm": 1.0,
+            "lamb": 0.9
+        },
+        "Tree-Backup": {
+            "model": "defaultCNN",
+            "convergence_epsilon": 1e-4,
+            "max_epochs": 3,
+            "batch_size": 32,
+            "clipnorm": 1.0,
+            "lamb": 0.9
+        },
+        "Q^pi(lambda)": {
+            "model": "defaultCNN",
+            "convergence_epsilon": 1e-4,
+            "max_epochs": 3,
+            "batch_size": 32,
+            "clipnorm": 1.0,
+            "lamb": 0.9
+        },
+        "Q-Reg": {
+            "model": "defaultCNN",
+            "convergence_epsilon": 1e-4,
+            "max_epochs": 100,
+            "batch_size": 32,
+            "clipnorm": 1.0
+        },
+        "MRDR": {
+            "model": "defaultCNN",
+            "convergence_epsilon": 1e-4,
+            "max_epochs": 100,
+            "batch_size": 32,
+            "clipnorm": 1.0
+        },
+        "MBased": {
+            "model": "defaultModelBasedCNN",
+            "convergence_epsilon": 1e-4,
+            "max_epochs": 100,
+            "batch_size": 32,
+            "clipnorm": 1.0,
+            "max_traj_length": 25
+        },
+        "IS": {
+            "model": "tabular"
+        }
+    }
+}

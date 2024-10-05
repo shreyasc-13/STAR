@@ -1,0 +1,60 @@
+{
+    "experiment": {
+        "gamma": 1,
+        "horizon": 150,
+        "base_policy": 0.5,
+        "eval_policy": 0.1,
+        "stochastic_env": true,
+        "stochastic_rewards": false,
+        "sparse_rewards": false,
+        "num_traj": 8,
+        "is_pomdp": false,
+        "pomdp_horizon": 2,
+        "seed": 1000,
+        "experiment_number": 0,
+        "access": 0,
+        "secret": 0,
+        "to_regress_pi_b": {
+            "to_regress": false,
+            "model": "tabular"
+        },
+        "frameskip": 1,
+        "frameheight": 1,
+        "mdp_file": "ope/envs/sepsis_dynamics.npz"
+    },
+    "compute": {
+        "n_jobs": 1
+    },
+    "models": {
+        "ours": {
+            "model": "defaultFFNN",
+            "env": "sepsis",
+            "c": 1,
+            "num_abs_states": 16
+        },
+        "IS": {
+            "model": "tabular"
+        },
+        "FQE": {
+            "model": "tabular",
+            "convergence_epsilon": 1e-3,
+            "max_epochs": 100
+        },
+        "Q-Reg": {
+            "model": "tabular",
+            "convergence_epsilon": 1e-3,
+            "max_epochs": 100
+        },
+        "MRDR": {
+            "model": "tabular",
+            "convergence_epsilon": 1e-3,
+            "max_epochs": 100
+        },
+        "MBased": {
+            "model": "tabular",
+            "convergence_epsilon": 1e-3,
+            "max_epochs": 100,
+            "max_traj_length": 20
+        }
+    }
+}
